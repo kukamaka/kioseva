@@ -30,40 +30,34 @@
         100% { transform: rotate(360deg); }
       }
       
-      /* Set the initial state of the "Дидка" element to hidden */
-      #didka {
-        display: none;
-      }
-
-      /* Apply the animation to each letter of the "Данчооо" element */
-      #danchooo span {
+      /* Apply the animation to each letter of the text */
+      span:nth-child(1) {
         animation: color-change 6s infinite;
       }
-
-      /* Fade out the "Данчооо" element and fade in the "Дидка" element when the "clicked" class is added */
-      #danchooo.clicked {
-        animation: fade-out 1s forwards;
+      span:nth-child(2) {
+        animation: color-change 6s infinite 1s;
+      }
+      span:nth-child(3) {
+        animation: color-change 6s infinite 2s;
+      }
+      span:nth-child(4) {
+        animation: color-change 6s infinite 3s;
+      }
+      span:nth-child(5) {
+        animation: color-change 6s infinite 4s;
+      }
+      span:nth-child(6) {
+        animation: color-change 6s infinite 5s;
       }
 
-      #didka.clicked {
-        display: block;
-        animation: fade-in 1s forwards;
-      }
-
-      /* Define the fade-in and fade-out animations */
-      @keyframes fade-out {
-        0% { opacity: 1; }
-        100% { opacity: 0; }
-      }
-
-      @keyframes fade-in {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
+      /* Apply the spin animation to the text when it is clicked */
+      div.clicked {
+        animation: spin 1s linear;
       }
     </style>
   </head>
   <body>
-    <div id="danchooo">
+    <div id="text">
       <span>Д</span>
       <span>а</span>
       <span>н</span>
@@ -72,13 +66,19 @@
       <span>о</span>
       <span>о</span>
     </div>
-    <div id="didka">
-      <span>Д</span>
-      <span>и</span>
-      <span>д</span>
-      <span>к</span>
-      <span>а</span>
-    </div>
-    <input type="button" value="Click me!" onclick="document.getElementById('danchooo').classList.add('clicked')">
+    
+    <script>
+      // Get the text element
+      var text = document.getElementById("text");
+      
+      // Add a click event listener to the text
+      text.addEventListener("click", function() {
+        // Change the text to "Дидка"
+        text.innerHTML = "<span>Д</span><span>и</span><span>д</span><span>к</span><span>а</span>";
+        
+        // Add the "clicked" class to the text to trigger the spin animation
+        text.classList.add("clicked");
+      });
+    </script>
   </body>
 </html>
