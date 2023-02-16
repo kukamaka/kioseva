@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Данчооо</title>
     <style>
       /* Set the font size and center the text on the page */
@@ -24,6 +23,12 @@
         80% { color: blue; }
         100% { color: purple; }
       }
+
+      /* Define CSS animation to spin the text */
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
       
       /* Apply the animation to each letter of the text */
       span:nth-child(1) {
@@ -44,10 +49,15 @@
       span:nth-child(6) {
         animation: color-change 6s infinite 5s;
       }
+
+      /* Apply the spin animation to the text when it is clicked */
+      div.clicked {
+        animation: spin 1s linear;
+      }
     </style>
   </head>
   <body>
-    <div>
+    <div id="text">
       <span>Д</span>
       <span>а</span>
       <span>н</span>
@@ -56,5 +66,19 @@
       <span>о</span>
       <span>о</span>
     </div>
+    
+    <script>
+      // Get the text element
+      var text = document.getElementById("text");
+      
+      // Add a click event listener to the text
+      text.addEventListener("click", function() {
+        // Change the text to "Дидка"
+        text.innerHTML = "<span>Д</span><span>и</span><span>д</span><span>к</span><span>а</span>";
+        
+        // Add the "clicked" class to the text to trigger the spin animation
+        text.classList.add("clicked");
+      });
+    </script>
   </body>
 </html>
